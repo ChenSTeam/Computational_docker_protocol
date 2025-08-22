@@ -1,0 +1,30 @@
+apt-get update && apt-get install -y \
+    wget \
+    bzip2 \
+    ca-certificates \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+CONDA_DIR=/opt/conda
+wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ./miniconda.sh && \
+    bash ./miniconda.sh -b -p $CONDA_DIR && \
+    rm ./miniconda.sh
+PATH=$CONDA_DIR/bin:$PATH
+
+conda tos accept
+
+conda create -n md python=3.12 -y
+
+conda init
+
+conda activate md
+
+conda install conda-forge::openmm openmmforcefields mdtraj pdbfixer matplotlib -y
+conda install conda-forge::libsqlite --force-reinstall -y
+
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+
+#export env
+docker run -it -v ./env:/env md_protocol:test
+conda env export > /env/environment.yml
