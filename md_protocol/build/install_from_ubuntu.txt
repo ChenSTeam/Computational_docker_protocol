@@ -25,6 +25,9 @@ conda install conda-forge::libsqlite --force-reinstall -y
 
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 
+docker build -t ychen209/md_protocol .
+
 #export env
-docker run -it -v ./env:/env md_protocol:test
+docker build -t ychen209/md_protocol:test .
+docker run -it -v ./env:/env ychen209/md_protocol:test
 conda env export > /env/environment.yml

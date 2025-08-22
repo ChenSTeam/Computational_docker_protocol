@@ -3,6 +3,6 @@
 # example with 10 ps simulation
 
 # protein
-docker run -it --rm --gpus all -v ./input:/input -v ./output:/output md_protocol md_protein.py --pdb /input/protein.pdb --output /output --timestep 0.002 --ministep 5000 --steps 5000 --savesteps 500
+docker run -it --rm --gpus all -v ./input:/input -v ./output:/output ychen209/md_protocol md_protein.py --pdb /input/protein.pdb --output /output --timestep 0.002 --ministep 5000 --steps 5000 --savesteps 500
 # protein with ligand
-docker run -it --rm --gpus all -v ./input:/input -v ./output:/output md_protocol md_protein_ligand.py --receptor /input/receptor.pdb --ligand /input/ligand.sdf --output /output --timestep 0.002 --ministep 5000 --steps 5000 --savesteps 500
+docker run -it --rm --gpus all -v ./input:/input -v ./output:/output ychen209/md_protocol md_protein_ligand.py --receptor /input/receptor.pdb --ligand /input/ligand.sdf --output /output --timestep 0.002 --ministep 5000 --steps 5000 --savesteps 500
