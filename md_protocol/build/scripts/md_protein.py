@@ -21,9 +21,9 @@ import mdtraj as md
 import matplotlib.pyplot as plt
 import numpy as np
 
-import torch
+import GPUtil
 
-if torch.cuda.is_available():
+if len(GPUtil.getAvailable()) > 0:
     device = 'CUDA'
 else:
     device = 'CPU'
@@ -193,6 +193,8 @@ def main():
 
     print('## 03 run simple analysis!')
     md_analysis(topo = topology_file, traj = traj_output, out = output, duration= args.timestep * args.savesteps)
+
+    print('## 04 Complete!')
 
 if __name__ == '__main__':
     main()

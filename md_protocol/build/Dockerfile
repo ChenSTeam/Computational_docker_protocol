@@ -3,6 +3,7 @@ FROM ubuntu:25.04
 
 # Prevent interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED=1
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -27,9 +28,8 @@ RUN conda tos accept && \
 # Activate environment by default
 SHELL ["conda", "run", "-n", "md", "/bin/bash", "-c"]
 
-RUN conda install conda-forge::openmm openmmforcefields mdtraj pdbfixer matplotlib -y && \
-    conda install conda-forge::libsqlite --force-reinstall -y && \
-    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+RUN conda install conda-forge::openmm openmmforcefields mdtraj pdbfixer matplotlib gputil cudatoolkit cudnn -y && \
+    conda install conda-forge::libsqlite --force-reinstall -y
 
 # Set working directory
 WORKDIR /app
