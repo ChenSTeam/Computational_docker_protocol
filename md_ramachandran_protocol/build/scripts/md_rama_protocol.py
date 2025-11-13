@@ -63,7 +63,7 @@ def main():
             md_simulation.recenter_molecule(traj_output, topology_file)
             md_simulation.remove_solvent(traj_output, topology_file)
             
-            #analysis of ramanchandran properties
+            #analysis of ramachandran properties
             md_analysis.phi_psi_calc(traj_output,topology_file,out=phi_psi_out)
             md_analysis.rama_plot(uaa_name, phi_psi_out)
 
