@@ -1,0 +1,4 @@
+uaa_name,uaa_smiles,status
+acK,CC(=O)NCCCC[C@@H](C(=O)O)N,completed
+abocK,CC(C)(C)OC(=O)N[C@@H](CCCCN)C(O)=O,failed
+bocK,CC(C)(C)OC(=O)C(CCC[C@@H](C(=O)O)N)N,completed
