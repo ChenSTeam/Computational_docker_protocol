@@ -82,6 +82,8 @@ docker build -t <myImage> .
 ## md_ramachandran_protocol
 
 ### Input  
+The input file should contain two columns with header of `name` and `smiles`. The file should be in the format of comma-separated values.  
+The following is an example:
 | name | smiles |
 |:---:|:---:|
 | acK | CC(=O)NCCCC[C@@H](C(=O)O)N |
