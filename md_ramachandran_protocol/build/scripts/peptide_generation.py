@@ -3,7 +3,7 @@ from rdkit.Chem import rdChemReactions, Draw, AllChem
 
 #useful smiles
 ACETYL_SMILES = "CC(=O)O"
-AMINE_SMILES = "N"
+AMINE_SMILES = "NC"
 Alanine_SMILES = "N[C@@H](C)C(=O)O"
 Arginine_SMILES = "N[C@@H](CCCNC(=N)N)C(=O)O"
 Asparagine_SMILES = "N[C@@H](CC(=O)N)C(=O)O"
@@ -51,7 +51,7 @@ aa1tosmiles = {
 #pattern of amide bond reaction on alpha COO and N
 amide_rxn = rdChemReactions.ReactionFromSmarts("[N:1][C:2][C:3](=[O:4])[O:5].[N;H2:6][C:7][C:8](=[O:9])>>[N:1][C:2][C:3](=[O:4])[N;H:6][C:7][C:8](=[O:9])")
 acylation_rxn = rdChemReactions.ReactionFromSmarts("[C:3](=[O:4])[O:5].[N;H2:6][C:7][C:8](=[O:9])>>[C:3](=[O:4])[N;H:6][C:7][C:8](=[O:9])")
-amidation_rxn = rdChemReactions.ReactionFromSmarts("[N:1][C:2][C:3](=[O:4])[O:5].[N:6]>>[N:1][C:2][C:3](=[O:4])[N:6]")
+amidation_rxn = rdChemReactions.ReactionFromSmarts("[N:1][C:2][C:3](=[O:4])[O:5].[N:6][C:7]>>[N:1][C:2][C:3](=[O:4])[N:6][C:7]")
 
 def is_alpha_amino_acid(mol):
     if mol is None:
