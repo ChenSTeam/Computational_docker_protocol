@@ -14,7 +14,7 @@ def parse_args():
     parser.add_argument('--uaa_file', type=str, help='input uaa file')
     parser.add_argument('--output', type=str, default='.', help='output folder')
     parser.add_argument('--timestep', type=float, default=0.002, help='* unit of picosecond')
-    parser.add_argument('--ministep', type=int, default=50000)
+    parser.add_argument('--ministep', type=int, default=500000)
     parser.add_argument('--steps', type=int, default=50000000)
     parser.add_argument('--savesteps', type=int, default=50000)
     
