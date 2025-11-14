@@ -100,8 +100,8 @@ docker run -it --rm --gpus all -v ./input:/input -v ./output:/output ychen209/md
 ```
 ### Options
 | Option <default> | Description |
-|--------|-------------|
-| `--uaa_file < >` | The file containing uaa `name` and `smiles` for calculation in the `csv` format. |
+|---|---|
+| `--uaa_file <>` | The file containing uaa `name` and `smiles` for calculation in the `csv` format. |
 | `--output <.>` | Assign an output folder. The folder will be created if not exist. |
 | `--timestep <0.002>` | Assign the time duration of each step in the `* unit of picosecond` format. This parameter is not recommended to modify, while increase of this parameter will highly increase computational load and evenleading to crash. |
 | `--ministep <500000>` | Steps for minimization. Default is 1 ns. |
