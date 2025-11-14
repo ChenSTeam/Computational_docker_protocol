@@ -84,10 +84,11 @@ docker build -t <myImage> .
 ### Input  
 The input file should contain two columns with header of `name` and `smiles`. The file should be in the format of comma-separated values.  
 The following is an example:
-| name | smiles |
-|:---:|:---:|
-| acK | CC(=O)NCCCC[C@@H](C(=O)O)N |
-| bocK | CC(C)(C)OC(=O)C(CCC[C@@H](C(=O)O)N)N |
+```
+name,smiles
+acK,CC(=O)NCCCC[C@@H](C(=O)O)N
+bocK,CC(C)(C)OC(=O)C(CCC[C@@H](C(=O)O)N)N
+```
 
 ### Run  
 ```
