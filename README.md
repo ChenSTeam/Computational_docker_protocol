@@ -85,6 +85,7 @@ docker build -t <myImage> .
 The input file should contain two columns with header of `name` and `smiles`. The file should be in the format of comma-separated values.  
 The following is an example:
 ```
+# file name as 'aa_file.csv'
 name,smiles
 acK,CC(=O)NCCCC[C@@H](C(=O)O)N
 bocK,CC(C)(C)OC(=O)C(CCC[C@@H](C(=O)O)N)N
@@ -92,11 +93,29 @@ bocK,CC(C)(C)OC(=O)C(CCC[C@@H](C(=O)O)N)N
 
 ### Run  
 ```
-# default
-docker run -it --rm --gpus all -v ./input:/input -v ./output:/output ychen209/md_ramachandran --uaa_file /input/uaa.txt --output /output
+# example working directory
+workdir/
+└── input/
+      └── aa_file.csv             # input uaa file (only needed file for input)
+```
 
-# example
-docker run -it --rm --gpus all -v ./input:/input -v ./output:/output ychen209/md_ramachandran --uaa_file /input/uaa.txt --output /output --timestep 0.002 --ministep 50000 --steps 500000 --savesteps 500
+```
+# run the command in your working directory for example 'workdir'
+# usage
+docker run -it --rm --gpus all -v {local input folder}:{container input folder} -v {local output folder}:{container output folder} ychen209/md_ramachandran --uaa_file {uaa_file} --output {output folder}
+
+{local input folder} - the input folder in your working directory, './input' here
+{container input folder} - the input folder path in the container, and Docker mounts the {local input folder} to this internal path, '/input' recommended here
+{local output folder} - the output folder in your working directory and the folder will be create if not exist, './output' recommended here
+{container output folder} - the output folder path in the container, and Docker mounts the {local output folder} to this internal path, '/output' recommended here
+{uaa_file} - the file containing uaa smiles for calculation in your working directory, 'input/aa_file.csv' here
+{output folder} - the folder for output, '/output' recommended here
+
+# default example
+docker run -it --rm --gpus all -v ./input:/input -v ./output:/output ychen209/md_ramachandran --uaa_file /input/aa_file.csv --output /output
+
+# if change the parameters
+docker run -it --rm --gpus all -v ./input:/input -v ./output:/output ychen209/md_ramachandran --uaa_file /input/aa_file.csv --output /output --timestep 0.002 --ministep 50000 --steps 500000 --savesteps 500
 ```
 ### Options
 | Option <default> | Description |
