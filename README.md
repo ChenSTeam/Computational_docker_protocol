@@ -113,7 +113,7 @@ docker run -it --rm --gpus all -v ./input:/input -v ./output:/output ychen209/md
 # acK as example
 workdir/
 ├── input/
-│     └── aa_file.csv                 # input uaa file
+│     └── aa_file.csv             # input uaa file (only needed file for input)
 └── output/
       ├── log.txt                 # status of the batch
       ├── error.txt               # generated if some uaa failed
