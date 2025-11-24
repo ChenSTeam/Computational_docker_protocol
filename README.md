@@ -108,7 +108,7 @@ docker run -it --rm --gpus all -v ./input:/input -v ./output:/output ychen209/md
 | `--steps <50000000>` | Steps for simulation. Default is 100 ns. |
 | `--savesteps <50000>` | Steps for saving each frame. Default is 100 ps per frame. |
 
-### Output
+### Workdir example
 ```
 # acK as example
 workdir/
