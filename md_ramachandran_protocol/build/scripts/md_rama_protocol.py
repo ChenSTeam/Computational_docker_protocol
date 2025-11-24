@@ -7,6 +7,8 @@ import md_simulation
 import md_analysis
 import os
 import argparse
+import traceback
+import datetime
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -17,6 +19,9 @@ def parse_args():
     parser.add_argument('--ministep', type=int, default=500000)
     parser.add_argument('--steps', type=int, default=50000000)
     parser.add_argument('--savesteps', type=int, default=50000)
+    #parser.add_argument('--ministep', type=int, default=10)
+    #parser.add_argument('--steps', type=int, default=100)
+    #parser.add_argument('--savesteps', type=int, default=10)
     
     return parser.parse_args()
 
@@ -27,6 +32,7 @@ def main():
     uaa_file = args.uaa_file
     out_folder = args.output
     log_file = f'{out_folder}/log.txt'
+    error_output = f'{out_folder}/error.txt'
     ministep = args.ministep
     stepnum = args.steps
     timestep = args.timestep
@@ -67,9 +73,30 @@ def main():
             md_analysis.phi_psi_calc(traj_output,topology_file,out=phi_psi_out)
             md_analysis.rama_plot(uaa_name, phi_psi_out)
 
-        except:
+        except Exception as e:
+            if not os.path.exists(error_output):
+                with open(error_output, 'w+') as f:
+                     f.write('\n')
+
             with open(log_file, 'a+') as f:
                 f.write(f'{uaa_name},{uaa_smiles},failed\n')
+            
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            error_traceback = traceback.format_exc()
+            error_content = (
+                "========================================\n"
+                f"time: {timestamp}\n"
+                f"error type: {type(e).__name__}\n"
+                f"error messages: {e}\n"
+                "------\n"
+                f"{error_traceback}"
+                "========================================\n\n"
+                )
+
+            with open(error_output, 'a+') as f:
+                 f.write(f'{uaa_name},{uaa_smiles},failed\n')
+                 f.write(error_content)
+
             continue
         
         with open(log_file, 'a+') as f:

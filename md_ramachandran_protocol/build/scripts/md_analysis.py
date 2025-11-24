@@ -3,6 +3,8 @@ from collections import defaultdict
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from scipy.stats import gaussian_kde
+import numpy as np
 
 def build_neighbors(top):
     neigh = defaultdict(list)
@@ -192,7 +194,7 @@ def phi_psi_calc(*args, out):
 def rama_plot(uaa_name, out):
 
     df = pd.read_csv(out)
-
+    '''
     f = plt.figure(figsize=(4,4))
     ax1 = sns.kdeplot(x='phi', y='psi',data=df)
     ax1.set_title(f'Ramachandran plot of {uaa_name}')
@@ -210,3 +212,50 @@ def rama_plot(uaa_name, out):
 
     plt.savefig(out[:-4] + '.svg')
     plt.savefig(out[:-4] + '.png')
+    '''
+
+    phi = df.phi.to_numpy()
+    psi = df.psi.to_numpy()
+
+    xy = np.vstack([phi, psi])
+    z_raw = gaussian_kde(xy)(xy)
+    threshold = np.percentile(z_raw, 5) 
+    mask = z_raw > threshold
+    phi_clean = phi[mask]
+    psi_clean = psi[mask]
+    values_clean = np.vstack([phi_clean, psi_clean])
+
+    kernel = gaussian_kde(values_clean, bw_method=0.15) 
+    grid_resolution = 500 
+    X, Y = np.mgrid[-180:180:complex(grid_resolution), -180:180:complex(grid_resolution)]
+    positions = np.vstack([X.ravel(), Y.ravel()])
+    Z = np.reshape(kernel(positions).T, X.shape)
+    kT = 0.6
+    G = -kT * np.log(Z + 1e-12)
+    G = G - np.min(G)
+    cutoff_energy = 6.0
+    G_masked = np.ma.masked_where(G > cutoff_energy, G)
+
+    plt.figure(figsize=(5,4))
+    contour = plt.contourf(X, Y, G_masked, levels=np.linspace(0, cutoff_energy, 15), cmap='jet')
+    plt.contour(X, Y, G_masked, levels=np.linspace(0, cutoff_energy, 15), colors='black', linewidths=0.3, alpha=0.6)
+    cbar = plt.colorbar(contour)
+    cbar.set_label('Free Energy (kcal/mol)', rotation=270, labelpad=15)
+
+    plt.xlim(-180, 180)
+    plt.ylim(-180, 180)
+    plt.xticks([-180,-135,-90,-45,0,45,90,135,180])
+    plt.yticks([-180,-135,-90,-45,0,45,90,135,180])
+    plt.xlabel('Phi (degree)', fontsize=12)
+    plt.ylabel('Psi (degree)', fontsize=12)
+    plt.title(f'Free Energy Surface of {uaa_name}')
+    plt.axhline(0, linewidth=1,color='gray',ls=':')
+    plt.axvline(0, linewidth=1,color='gray',ls=':')
+    plt.tight_layout()
+
+    plt.savefig(out[:-4] + '.svg')
+    plt.savefig(out[:-4] + '.png')
+
+    plt.scatter(phi_clean, psi_clean, s=5, color='black', alpha=0.2, linewidth=0, label='Cleaned Data')
+    plt.savefig(out[:-4] + '_scatter.svg')
+    plt.savefig(out[:-4] + '_scatter.png')

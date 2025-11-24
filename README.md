@@ -113,15 +113,19 @@ docker run -it --rm --gpus all -v ./input:/input -v ./output:/output ychen209/md
 # acK as example
 workdir/
 ├── input/
-│     └── uaa.txt            # input uaa file
+│     └── uaa.txt           # input uaa file
 └── output/
+      ├── log.txt           # status of the batch
+      ├── error.txt         # generated if some uaa failed
       ├── md/
-      │    ├── acK.sdf       # generated tripeptide
-      │    ├── acK.cif       # topology structure in md   
-      │    ├── acK.dcd       # trajectory file in md
-      │    └── acK_log.txt   # information during md
+      │    ├── acK.sdf      # generated tripeptide
+      │    ├── acK.cif      # topology structure in md   
+      │    ├── acK.dcd      # trajectory file in md
+      │    └── acK_log.txt  # information during md
       └── rama/
-           ├── acK.txt       # phi/psi information during md
-           ├── acK.png       # Ramachandran plot
-           └── acK.svg       # Ramachandran plot in vector graphics
+           ├── acK.txt      # phi/psi information during md
+           ├── acK.png      # Ramachandran plots of the free energy surface
+           ├── acK.svg      # plot in vector graphics
+           ├── acK_scatter.png  # plot with scatter
+           └── acK_scatter.svg  # plot with scatter in vector graphics
 ```

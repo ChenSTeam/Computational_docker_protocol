@@ -22,7 +22,7 @@ else:
 def md_run(ligand_path, topology_file, traj_output, log_output, ministep, stepnum, timestep, savestep):
     #read files
     print('Reading files ...')
-    ligand = Molecule.from_file(ligand_path)
+    ligand = Molecule.from_file(ligand_path, allow_undefined_stereo=True)
 
     print('Generate force filed and modeller ...')
     #force field
