@@ -45,36 +45,21 @@ CMD ["python", "app.py"]
 docker build -t <myImage> .
 ```
 
-### Options for `docker run`  
+### Some options for `docker run`  
 | Option | Description |
 |--------|-------------|
-| `-d`, `--detach` | Run container in the background. |
 | `--rm` | Automatically remove the container after it exits. |
-| `--name <name>` | Assign a custom container name. |
 | `-i` | Keep STDIN open. |
 | `-t` | Allocate a pseudo-TTY (use with `-i` → `-it`). |
-| `-p <host:container>` | Map host port to container port. |
-| `-P` | Publish all exposed ports automatically. |
-| `--network <network>` | Connect container to a specific Docker network. |
-| `--dns <server>` | Set DNS server for the container. |
-| `-e KEY=value` | Set environment variable. |
 | `--env-file <file>` | Load environment variables from a file. |
 | `-v <host:container>` | Bind mount a host directory or file. |
 | `--mount` | Advanced mount configuration. |
-| `--read-only` | Set container filesystem as read-only. |
-| `--tmpfs <path>` | Mount a tmpfs (memory-only filesystem). |
 | `-m`, `--memory <limit>` | Memory limit for the container. |
 | `--cpus <count>` | Limit CPU usage. |
 | `--cpu-shares <value>` | Set CPU scheduling weight. |
 | `--gpus <all/N>` | Assign GPU devices. |
-| `--restart <policy>` | Set restart policy (`no`, `on-failure`, `always`, `unless-stopped`). |
 | `--user <uid:gid>` | Run container as a specific user. |
 | `--privileged` | Give the container full privileges. |
-| `--cap-add <cap>` | Add Linux capabilities. |
-| `--cap-drop <cap>` | Drop Linux capabilities. |
-| `--security-opt <opt>` | Set security options (AppArmor, seccomp, etc.). |
-| `--entrypoint <cmd>` | Override the image entrypoint. |
-| `-w`, `--workdir <dir>` | Set working directory inside the container. |
 | `--pull <policy>` | Pull image policy (`always`, `missing`, `never`). |
 
 &nbsp;
@@ -85,7 +70,7 @@ docker build -t <myImage> .
 The input file should contain two columns with header of `name` and `smiles`. The file should be in the format of comma-separated values.  
 The following is an example:
 ```
-# file name as 'aa_file.csv'
+# example file name as 'aa_file.csv'
 name,smiles
 acK,CC(=O)NCCCC[C@@H](C(=O)O)N
 bocK,CC(C)(C)OC(=O)C(CCC[C@@H](C(=O)O)N)N
@@ -127,7 +112,7 @@ docker run -it --rm --gpus all -v ./input:/input -v ./output:/output ychen209/md
 | `--steps <50000000>` | Steps for simulation. Default is 100 ns. |
 | `--savesteps <50000>` | Steps for saving each frame. Default is 100 ps per frame. |
 
-### Workdir example
+### Example output
 ```
 # acK as example
 workdir/
