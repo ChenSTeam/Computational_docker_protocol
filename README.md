@@ -6,7 +6,7 @@ An Image used for molecular dynamics simulation using OpenMM, including protein-
 
 - __md_ramachandran_protocol__  [![Docker Pulls](https://img.shields.io/docker/pulls/ychen209/md_ramachandran)](https://hub.docker.com/r/ychen209/md_ramachandran)  
 An Image used for Ramachandran plot of $\alpha$-amino acids (natural and unnatural), in which the phi/psi angles were calculated by molecular dynamics simulation.  
-run time example (default 100 ns per uaa): RTX 4090 ~ 1300 ns, RTX 4060 laptop ~ 530 ns, RTX 3090 ~ 1100 ns, RTX 3080 Ti ~ 1100 ns, Tesla T4 ~ 660 ns.  
+Run time example (default 100 ns per uaa): RTX 4090 ~ 1300 ns, RTX 4060 laptop ~ 530 ns, RTX 3090 ~ 1100 ns, RTX 3080 Ti ~ 1100 ns, Tesla T4 ~ 660 ns.  
 
 ## Fundamental Docker Usage
 
