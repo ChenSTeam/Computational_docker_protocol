@@ -50,7 +50,8 @@ aa1tosmiles = {
 
 #pattern of amide bond reaction on alpha COO and N
 #amide_rxn = rdChemReactions.ReactionFromSmarts("[N:1][C:2][C:3](=[O:4])[O:5].[N;H2:6][C:7][C:8](=[O:9])>>[N:1][C:2][C:3](=[O:4])[N;H:6][C:7][C:8](=[O:9])")
-amide_rxn = rdChemReactions.ReactionFromSmarts("[N:1][C:2][C:3](=[O:4])[O:5].[N;H1,H2:6][C:7][C:8](=[O:9])>>[N:1][C:2][C:3](=[O:4])[N:6][C:7][C:8](=[O:9])")
+#amide_rxn = rdChemReactions.ReactionFromSmarts("[N:1][C:2][C:3](=[O:4])[O:5].[N;H1,H2:6][C:7][C:8](=[O:9])>>[N:1][C:2][C:3](=[O:4])[N:6][C:7][C:8](=[O:9])")
+amide_rxn = rdChemReactions.ReactionFromSmarts("[N:1][C:2][C:3](=[O:4])[O:5].[N;H1,H2:6][C:7][C:8](=[O:9])[O:10]>>[N:1][C:2][C:3](=[O:4])[N:6][C:7][C:8](=[O:9])[O:10]")
 acylation_rxn = rdChemReactions.ReactionFromSmarts("[C:3](=[O:4])[O:5].[N;H2:6][C:7][C:8](=[O:9])>>[C:3](=[O:4])[N;H:6][C:7][C:8](=[O:9])")
 amidation_rxn = rdChemReactions.ReactionFromSmarts("[N:1][C:2][C:3](=[O:4])[O:5].[N:6][C:7]>>[N:1][C:2][C:3](=[O:4])[N:6][C:7]")
 
