@@ -1,0 +1,1 @@
+sudo docker run -it --rm --gpus all -v ./input:/input -v ./output:/output ychen209/md_ramachandran --uaa_file /input/aa_file.csv --output /output

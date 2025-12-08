@@ -1,0 +1,5 @@
+name,smiles
+lnaa_arg,N[C@@H](CCCNC(=N)N)C(=O)O
+lnaa_pro,O=C(O)[C@@H]1CCCN1
+dnaa_arg,N[C@H](CCCNC(=N)N)C(=O)O
+dnaa_pro,O=C(O)[C@H]1CCCN1

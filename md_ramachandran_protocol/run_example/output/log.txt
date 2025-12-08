@@ -1,0 +1,5 @@
+uaa_name,uaa_smiles,status
+lnaa_arg,N[C@@H](CCCNC(=N)N)C(=O)O,completed
+lnaa_pro,O=C(O)[C@@H]1CCCN1,completed
+dnaa_arg,N[C@H](CCCNC(=N)N)C(=O)O,completed
+dnaa_pro,O=C(O)[C@H]1CCCN1,completed
