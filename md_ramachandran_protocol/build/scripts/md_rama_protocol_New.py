@@ -130,8 +130,9 @@ def main():
             phi_psi_out = f'{out_folder}/rama/{structure_name}.txt'
 
             try:
-                file_path = structure_name + '.pdb'
-                Chem.MolFromPDBFile(file_path, removeHs=True, sanitize=True)
+                file_path = f'{out_folder}/md/{structure_name}.pdb'
+                peptide =  Chem.MolFromPDBFile(file_path, removeHs=True, sanitize=True)
+                Chem.MolToMolFile(peptide, ligand_path)
 
                 #simulation of the tripeptide    
                 md_simulation.md_run(ligand_path, topology_file, traj_output, log_output, ministep, stepnum , timestep, savestep)
@@ -140,7 +141,7 @@ def main():
             
                 #analysis of ramachandran properties
                 md_analysis.phi_psi_calc(traj_output,topology_file,out=phi_psi_out)
-                md_analysis.rama_plot(uaa_name, phi_psi_out)
+                md_analysis.rama_plot(structure_name, phi_psi_out)
 
             except Exception as e:
                 if not os.path.exists(error_output):
