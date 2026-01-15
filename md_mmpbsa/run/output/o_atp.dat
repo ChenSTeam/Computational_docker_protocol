@@ -1,0 +1,96 @@
+| Run on Wed Jan 14 11:35:45 2026
+|
+|Input file:
+|--------------------------------------------------------------
+|&general
+|    startframe=51,
+|    endframe=250,
+|    interval=5,
+|    verbose=1,
+|    /
+|    &decomp
+|    idecomp=1,
+|    dec_verbose=1,
+|    /
+|    &pb
+|    istrng=0.15,
+|    /
+|    --------------------------------------------------------------
+|MMPBSA.py Version=14.0
+|Complex topology file:           complex.prmtop
+|Receptor topology file:          receptor.prmtop
+|Ligand topology file:            ligand.prmtop
+|Initial mdcrd(s):                traj_complex.dcd
+|
+|Receptor mask:                  ":1-268"
+|Ligand mask:                    ":269"
+|Ligand residue name is "UNK"
+|
+|Calculations performed using 40.8 complex frames.
+|Poisson Boltzmann calculations performed using internal PBSA solver in sander.
+|
+|All units are reported in kcal/mole.
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+POISSON BOLTZMANN:
+
+Complex:
+Energy Component            Average              Std. Dev.   Std. Err. of Mean
+-------------------------------------------------------------------------------
+VDWAALS                  -2152.9470               22.8660              3.6154
+EEL                     -17871.7460               93.0815             14.7175
+ENPOLAR                   2186.3283               10.8977              1.7231
+EDISPER                  -1270.4460               13.9565              2.2067
+
+G gas                   -20024.6931               96.2683             15.2214
+G solv                     915.8823                6.9826              1.1041
+
+TOTAL                   -19108.8107               99.1719             15.6805
+
+
+Receptor:
+Energy Component            Average              Std. Dev.   Std. Err. of Mean
+-------------------------------------------------------------------------------
+VDWAALS                  -2108.1601               22.1658              3.5047
+EEL                     -18277.4301               94.8757             15.0012
+ENPOLAR                   2177.0903               10.7459              1.6991
+EDISPER                  -1281.2635               13.2368              2.0929
+
+G gas                   -20385.5901               99.9293             15.8002
+G solv                     895.8269                6.7556              1.0682
+
+TOTAL                   -19489.7633              102.6135             16.2246
+
+
+Ligand:
+Energy Component            Average              Std. Dev.   Std. Err. of Mean
+-------------------------------------------------------------------------------
+VDWAALS                     -9.2527                0.6161              0.0974
+EEL                        964.7565               11.8465              1.8731
+ENPOLAR                     40.8420                0.2930              0.0463
+EDISPER                    -48.1019                0.2905              0.0459
+
+G gas                      955.5038               11.8462              1.8730
+G solv                      -7.2599                0.3543              0.0560
+
+TOTAL                      948.2439               11.7703              1.8611
+
+
+Differences (Complex - Receptor - Ligand):
+Energy Component            Average              Std. Dev.   Std. Err. of Mean
+-------------------------------------------------------------------------------
+VDWAALS                    -35.5343                3.5562              0.5623
+EEL                       -559.0725               35.0266              5.5382
+EPB                          0.0000                0.0000              0.0000
+ENPOLAR                    -31.6040                1.1276              0.1783
+EDISPER                     58.9194                1.4083              0.2227
+
+DELTA G gas               -594.6068               34.6969              5.4861
+DELTA G solv                27.3154                0.9650              0.1526
+
+DELTA TOTAL               -567.2914               34.9607              5.5278
+
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
