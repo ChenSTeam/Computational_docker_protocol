@@ -28,7 +28,7 @@ RUN conda tos accept && \
 # Activate environment by default
 SHELL ["conda", "run", "-n", "md", "/bin/bash", "-c"]
 
-RUN conda install conda-forge::openmm openmmforcefields mdtraj pdbfixer matplotlib gputil cudatoolkit cudnn ambertools -y && \
+RUN conda install conda-forge::openmm openmmforcefields mdtraj pdbfixer matplotlib gputil cudatoolkit cudnn ambertools openbabel -y && \
     conda install conda-forge::libsqlite --force-reinstall -y
 
 # Set working directory
